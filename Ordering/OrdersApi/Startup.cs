@@ -13,9 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-/* using OrdersApi.Messages.Consumers;
+using OrdersApi.Messages.Consumers;
 using OrdersApi.Persistence;
-using OrdersApi.Services; */
+using OrdersApi.Services;
 
 namespace OrdersApi
 {
@@ -48,7 +48,7 @@ namespace OrdersApi
 
             services.AddSingleton(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
              {
-                 var host = cfg.Host("localhost", "/", h => { });
+                 cfg.Host("localhost", "/", h => { });
                  cfg.ReceiveEndpoint(RabbitMqMassTransitConstants.RegisterOrderCommandQueue, e =>
                  {
                      e.PrefetchCount = 16;
@@ -58,14 +58,14 @@ namespace OrdersApi
                  });
 
 
-                 cfg.ConfigureEndpoints(provider);
+                 //cfg.ConfigureEndpoints(provider);
              }));
             services.AddSingleton<IHostedService, BusService>();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            /* services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OrdersApi", Version = "v1" });
-            });
+            }); */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
