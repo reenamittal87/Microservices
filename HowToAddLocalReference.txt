@@ -1,0 +1,6 @@
+https://www.collaborationnotcompetition.com/developing-mvc-application-with-vscode/
+
+dotnet add app/app.csproj reference lib/lib.csproj
+
+dotnet add Faces.WebMvc.csproj reference D:\Faces\Faces.SharedLib\Messaging.InterfacesConstants\Messaging.InterfacesConstants.csproj
+
