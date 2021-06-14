@@ -6,4 +6,12 @@ dotnet add Faces.WebMvc.csproj reference D:\Faces\Faces.SharedLib\Messaging.Inte
 
 dotnet add OrdersApi.csproj reference D:\Faces\Faces.SharedLib\Messaging.InterfacesConstants\Messaging.InterfacesConstants.csproj
 
+dotnet add EmailService.csproj reference D:\Faces\Faces.SharedLib\Messaging.InterfacesConstants\Messaging.InterfacesConstants.csproj
+
+
 dotnet ef migrations add "initial" -o Persistence/Migrations
+
+dotnet add NotificationService.csproj reference D:\Faces\Faces.SharedLib\Messaging.InterfacesConstants\Messaging.InterfacesConstants.csproj
+
+dotnet add NotificationService.csproj reference D:\Faces\CustomerNotification\EmailService\EmailService.csproj
+

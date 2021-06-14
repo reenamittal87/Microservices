@@ -58,9 +58,20 @@ namespace OrdersApi
                  });
 
 
-                 //cfg.ConfigureEndpoints(provider);
+                 cfg.ConfigureEndpoints(provider);
              }));
             services.AddSingleton<IHostedService, BusService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .SetIsOriginAllowed((host) => true)
+                       .AllowCredentials());
+
+
+            });
             services.AddControllers();
             /* services.AddSwaggerGen(c =>
             {
@@ -74,10 +85,11 @@ namespace OrdersApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OrdersApi v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OrdersApi v1"));
             }
 
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
 
             app.UseRouting();
